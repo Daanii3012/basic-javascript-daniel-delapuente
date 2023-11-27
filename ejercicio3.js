@@ -1,22 +1,21 @@
 const scanner = require ("prompt-sync")({ sigint: true })
 
-let suma = 0;
+let cancelar = false
+let numInput
+let num
+let suma = 0
 
-while (true) {
-    let input = scanner("Introduce un número o escribe 'cancelar' para finalizar:");
+while (!cancelar) {
+    numInput = scanner('Introduce un numero ==>')
 
-    if (input.toLowerCase() === "cancelar") {
-        break;
-    }
-
-    let numero = parseFloat(input);
-
-    if (isNaN(numero)) {
-        console.log("No entendido. Por favor, introduce un número válido.");
-    } else {
-        suma += numero;
-    }
+if (Number(numInput)) {
+    num = Number(numInput)
+    suma += num
+} else if (numInput != 'cancelar') {
+    suma += num
+}else{
+    cancelar = true
+}
 }
 
-// Mostrar la suma total al salir
-console.log("La suma total de los números introducidos es: " + suma);
+console.log('La suma es ' + suma)
